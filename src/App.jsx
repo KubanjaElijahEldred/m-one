@@ -6,7 +6,6 @@ import {
   ContactRound,
   GalleryHorizontal,
   House,
-  Info,
   Newspaper,
   PackageCheck,
   Settings2,
@@ -20,21 +19,24 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { EVENT_CARDS, NAV_LINKS, PHONE } from './data/constants'
 
-const pageIds = NAV_LINKS.map((link) => link.page)
+const searchPages = [
+  ...NAV_LINKS,
+  { label: 'ABOUT US', page: 'about' },
+  { label: 'BLOG', page: 'blog' },
+]
+const allPageIds = searchPages.map((link) => link.page)
 const tabIcons = {
   home: House,
-  about: Info,
   services: Settings2,
   gallery: GalleryHorizontal,
   packages: PackageCheck,
-  blog: Newspaper,
   contact: ContactRound,
 }
 
 function getInitialPage() {
   const page = new URLSearchParams(window.location.search).get('page')
 
-  return pageIds.includes(page) ? page : 'home'
+  return allPageIds.includes(page) ? page : 'home'
 }
 
 function PageFrame({ eyebrow, title, children }) {
@@ -53,7 +55,7 @@ function PageFrame({ eyebrow, title, children }) {
   )
 }
 
-function Packages() {
+function Packages({ onNavigate }) {
   return (
     <PageFrame eyebrow="Event Packages" title="Choose Your Experience">
       <div className="package-grid">
@@ -65,6 +67,12 @@ function Packages() {
             <strong>{index === 0 ? 'Starter' : index === 1 ? 'Signature' : index === 2 ? 'Premium' : 'Custom'}</strong>
           </article>
         ))}
+      </div>
+      <div className="page-access-row">
+        <button type="button" onClick={() => onNavigate('blog')} className="btn-teal">
+          Event Planning Blog
+          <Newspaper className="h-4 w-4" />
+        </button>
       </div>
     </PageFrame>
   )
@@ -104,7 +112,7 @@ function SearchResults({ query, onNavigate }) {
 
     if (!value) return []
 
-    return NAV_LINKS.filter((link) => link.label.toLowerCase().includes(value))
+    return searchPages.filter((link) => link.label.toLowerCase().includes(value))
   }, [query])
 
   if (!query.trim()) return null
@@ -123,7 +131,7 @@ function SearchResults({ query, onNavigate }) {
       ) : (
         <div className="chrome-panel mx-auto max-w-3xl p-8 text-center">
           <p className="text-lg font-bold text-[#071b22]">
-            No matching page found. Try Home, Services, Gallery, Packages, Blog or Contact.
+            No matching page found. Try Home, Services, Gallery, Packages, Contact, About or Blog.
           </p>
         </div>
       )}
@@ -177,7 +185,7 @@ export default function App() {
   ) : activePage === 'contact' ? (
     <Contact />
   ) : activePage === 'packages' ? (
-    <Packages />
+    <Packages onNavigate={handleNavigate} />
   ) : (
     <Blog />
   )
@@ -185,6 +193,7 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7fcff] text-ink">
       <Navbar
+        activePage={activePage}
         onNavigate={handleNavigate}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}

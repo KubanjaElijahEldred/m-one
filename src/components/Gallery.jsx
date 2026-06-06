@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, BadgeCheck, ChevronLeft, Handshake, Search, Trophy } from 'lucide-react'
+import { ArrowRight, BadgeCheck, ChevronLeft, Handshake, Trophy } from 'lucide-react'
 import { GALLERY_IMAGES, STATS } from '../data/constants'
 
 const iconMap = { BadgeCheck, Handshake, Trophy }
@@ -54,10 +54,6 @@ export default function Gallery({ onNavigate }) {
         >
           <button type="button" className="magazine-arrow" aria-label="Previous gallery page">
             <ChevronLeft className="h-8 w-8" />
-          </button>
-
-          <button type="button" className="magazine-zoom" aria-label="Zoom gallery">
-            <Search className="h-16 w-16" strokeWidth={1.6} />
           </button>
 
           <div className="magazine-grid">
@@ -144,6 +140,10 @@ export default function Gallery({ onNavigate }) {
               </div>
               <button type="button" onClick={() => onNavigate('contact')} className="gallery-button">
                 Book The Team
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <button type="button" onClick={() => onNavigate('about')} className="gallery-button gallery-button-light">
+                About M-ONE
                 <ArrowRight className="h-4 w-4" />
               </button>
             </article>

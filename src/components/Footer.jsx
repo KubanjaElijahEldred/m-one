@@ -41,7 +41,6 @@ export default function Footer({ onNavigate }) {
             <h3>Quick Links</h3>
             <div className="footer-links">
               <button type="button" onClick={() => goTo('home')}>Home</button>
-              <button type="button" onClick={() => goTo('about')}>About Us</button>
               <button type="button" onClick={() => goTo('services')}>Services</button>
               <button type="button" onClick={() => goTo('gallery')}>Gallery</button>
               <button type="button" onClick={() => goTo('packages')}>Packages</button>

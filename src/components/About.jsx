@@ -1,75 +1,105 @@
 import { motion } from 'framer-motion'
-import { CheckCircle2, ShieldCheck } from 'lucide-react'
-import { IMAGES, PROMISES, VIDEO_SRC } from '../data/constants'
+import { ArrowRight, CalendarDays, Check, Mail, MessageCircle, Mic2, Phone, Star, UsersRound } from 'lucide-react'
+import { EMAIL, EVENT_CARDS, IMAGES, LOGO_SRC, PHONE, PHONE_RAW, PROMISES, WHATSAPP_URL } from '../data/constants'
+
+const iconMap = { CalendarDays, UsersRound, Mic2, Star }
 
 export default function About({ onNavigate }) {
   return (
-    <section id="about" className="relative bg-[#f7fcff] py-12">
-      <div className="section-shell grid items-center gap-8 lg:grid-cols-[0.38fr_0.62fr]">
-        <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-        >
-          <p className="section-label mb-3">Why Choose M-ONE</p>
-          <h2 className="mb-5 text-[clamp(2rem,4vw,3.2rem)] font-black leading-tight text-black">
-            We Plan. We Execute.
+    <section id="about" className="about-poster bg-[#e9faff] pt-28">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55 }}
+        className="about-poster-board"
+      >
+        <div className="about-dot-field" />
+        <div className="about-brand">
+          <img src={LOGO_SRC} alt="M-ONE Entertainment" />
+          <p className="font-script">&ldquo;We Prioritise Excellence.&rdquo;</p>
+        </div>
+
+        <div className="about-copy">
+          <p className="section-label">Why Choose M-ONE</p>
+          <h1>
+            We Plan.
             <br />
-            You{' '}
-            <span className="font-script text-[1.18em] font-normal text-[#008eae]">
-              Celebrate.
-            </span>
-          </h2>
-          <p className="mb-5 max-w-md text-base font-medium leading-relaxed text-[#17252b]">
-            At M-One Entertainment, we blend creativity, precision and passion to
-            deliver seamless events that exceed expectations. Your vision is our
-            mission.
+            We Execute.
+            <br />
+            You <span className="font-script">Celebrate.</span>
+          </h1>
+          <p>
+            At M-One Entertainment, we blend creativity, precision and passion to deliver seamless events that exceed
+            expectations. <strong>Your vision is our mission.</strong>
           </p>
-          <ul className="mb-7 space-y-2">
+          <ul>
             {PROMISES.map((promise) => (
-              <li key={promise} className="flex items-center gap-2 text-sm font-semibold">
-                <CheckCircle2 className="h-5 w-5 fill-[#008eae] text-white" />
+              <li key={promise}>
+                <span>
+                  <Check className="h-5 w-5" />
+                </span>
                 {promise}
               </li>
             ))}
           </ul>
           <button type="button" onClick={() => onNavigate('contact')} className="btn-teal">
             About Us
+            <ArrowRight className="h-5 w-5" />
           </button>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="feature-collage"
-        >
-          <div className="main-media-card">
-            <video
-              src={VIDEO_SRC}
-              className="h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster={IMAGES.stageConsole}
-            />
-            <div className="promise-card">
-              <div className="service-icon !h-14 !w-14">
-                <ShieldCheck className="h-7 w-7" />
-              </div>
-              <div>
-                <strong>Our Promise</strong>
-                <p>Quality | Creativity | Excellence Your Event, Our Priority.</p>
-              </div>
-            </div>
+        <div className="about-media about-media-main">
+          <img src={IMAGES.stageWide} alt="M-ONE live stage event" />
+        </div>
+        <div className="about-media about-media-mid">
+          <img src={IMAGES.stageConsole} alt="Stage setup and production equipment" />
+        </div>
+        <div className="about-media about-media-low">
+          <img src={IMAGES.mixerPortrait} alt="M-ONE technician mixing sound" />
+        </div>
+
+        <div className="about-services">
+          <p className="section-kicker">What We Do</p>
+          <h2>
+            Events That Leave A <span>Lasting Impact</span>
+          </h2>
+          <div>
+            {EVENT_CARDS.map((card) => {
+              const Icon = iconMap[card.icon]
+
+              return (
+                <article key={card.title}>
+                  <span>{Icon && <Icon className="h-8 w-8" />}</span>
+                  <h3>{card.title}</h3>
+                  <p>{card.text}</p>
+                </article>
+              )
+            })}
           </div>
-          <div className="side-stack">
-            <img src={IMAGES.stageWide} alt="Stage lighting at event" />
-            <img src={IMAGES.crew} alt="M-ONE crew" />
-          </div>
-        </motion.div>
-      </div>
+        </div>
+
+        <div className="about-phone-pill">
+          <a href={WHATSAPP_URL} aria-label="Chat with M-ONE on WhatsApp">
+            <MessageCircle className="h-7 w-7" />
+          </a>
+          <a href={`tel:${PHONE_RAW}`} aria-label="Call M-ONE">
+            <Phone className="h-6 w-6" />
+          </a>
+          <strong>{PHONE}</strong>
+        </div>
+
+        <div className="about-contact-strip">
+          <a href="https://moneevents.com">
+            <span>Visit Our Website</span>
+            <strong>moneevents.com</strong>
+          </a>
+          <a href={`mailto:${EMAIL}`}>
+            <Mail className="h-7 w-7" />
+            <span>Email Us</span>
+            <strong>{EMAIL}</strong>
+          </a>
+        </div>
+      </motion.div>
     </section>
   )
 }
