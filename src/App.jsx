@@ -21,7 +21,6 @@ import { EVENT_CARDS, NAV_LINKS, PHONE } from './data/constants'
 
 const searchPages = [
   ...NAV_LINKS,
-  { label: 'ABOUT US', page: 'about' },
   { label: 'BLOG', page: 'blog' },
 ]
 const allPageIds = searchPages.map((link) => link.page)
@@ -177,7 +176,7 @@ export default function App() {
   ) : activePage === 'home' ? (
     <Hero onNavigate={handleNavigate} />
   ) : activePage === 'services' ? (
-    <Services />
+    <Services onNavigate={handleNavigate} />
   ) : activePage === 'gallery' ? (
     <Gallery onNavigate={handleNavigate} />
   ) : activePage === 'about' ? (

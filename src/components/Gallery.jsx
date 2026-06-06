@@ -142,10 +142,6 @@ export default function Gallery({ onNavigate }) {
                 Book The Team
                 <ArrowRight className="h-4 w-4" />
               </button>
-              <button type="button" onClick={() => onNavigate('about')} className="gallery-button gallery-button-light">
-                About M-ONE
-                <ArrowRight className="h-4 w-4" />
-              </button>
             </article>
           </div>
         </motion.div>

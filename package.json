@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "vercel-build": "npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "vite --host 0.0.0.0"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",

@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, CalendarDays, Check, Mail, MessageCircle, Mic2, Phone, Star, UsersRound } from 'lucide-react'
+import { CalendarDays, Check, Mail, MessageCircle, Mic2, Phone, Star, UsersRound } from 'lucide-react'
 import { EMAIL, EVENT_CARDS, IMAGES, LOGO_SRC, PHONE, PHONE_RAW, PROMISES, WHATSAPP_URL } from '../data/constants'
 
 const iconMap = { CalendarDays, UsersRound, Mic2, Star }
 
-export default function About({ onNavigate }) {
+export default function About() {
   return (
     <section id="about" className="about-poster bg-[#e9faff] pt-28">
       <motion.div
@@ -42,10 +42,6 @@ export default function About({ onNavigate }) {
               </li>
             ))}
           </ul>
-          <button type="button" onClick={() => onNavigate('contact')} className="btn-teal">
-            About Us
-            <ArrowRight className="h-5 w-5" />
-          </button>
         </div>
 
         <div className="about-media about-media-main">
