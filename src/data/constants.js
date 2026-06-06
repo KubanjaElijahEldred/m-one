@@ -11,7 +11,7 @@ export const IMAGES = {
   console: '/3.png',
   stageConsole: '/4.png',
   stageWide: '/5.png',
-  brand: '/favicon.png',
+  brand: '/logo.png',
 }
 
 export const NAV_LINKS = [

@@ -16,6 +16,7 @@ import {
 import {
   EVENT_CARDS,
   IMAGES,
+  LOGO_SRC,
   PHONE,
   PHONE_RAW,
   PRODUCTION_TOOLS,
@@ -95,7 +96,7 @@ export default function Hero() {
 
           <div className="poster-center">
             <div className="poster-logo-ring">
-              <img src={IMAGES.brand} alt="M-ONE Entertainment" />
+              <img src={LOGO_SRC} alt="M-ONE Entertainment" />
             </div>
             <h1>
               <span className="poster-title metallic-text">M-ONE</span>

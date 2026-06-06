@@ -17,7 +17,10 @@ import Gallery from './components/Gallery'
 import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import PageSkeleton from './components/PageSkeleton'
+import SplashScreen from './components/SplashScreen'
 import { EVENT_CARDS, NAV_LINKS, PHONE } from './data/constants'
+import usePageLoad from './hooks/usePageLoad'
 
 const searchPages = [
   ...NAV_LINKS,
@@ -163,6 +166,7 @@ function TabDock({ activePage, onNavigate }) {
 export default function App() {
   const [activePage, setActivePage] = useState(getInitialPage)
   const [searchQuery, setSearchQuery] = useState('')
+  const phase = usePageLoad()
 
   const handleNavigate = (page) => {
     setActivePage(page)
@@ -191,6 +195,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7fcff] text-ink">
+      <AnimatePresence>
+        {phase === 'splash' && <SplashScreen />}
+      </AnimatePresence>
+      {phase === 'loading' && <PageSkeleton />}
+      {phase === 'ready' && (
+        <>
       <Navbar
         activePage={activePage}
         onNavigate={handleNavigate}
@@ -215,6 +225,8 @@ export default function App() {
       <div className="fixed bottom-24 right-4 z-40 hidden rounded-full bg-white/90 px-4 py-2 text-sm font-black text-[#007797] shadow-xl shadow-cyan-950/10 md:block">
         {PHONE}
       </div>
+        </>
+      )}
     </div>
   )
 }
