@@ -63,7 +63,7 @@ function Packages({ onNavigate }) {
       <div className="package-grid">
         {EVENT_CARDS.map((item, index) => (
           <article key={item.title} className="chrome-panel package-card">
-            <PackageCheck className="h-10 w-10 text-[#008eae]" />
+            <PackageCheck className="h-10 w-10 text-[#008f98]" />
             <h2>{item.title}</h2>
             <p>{item.text}</p>
             <strong>{index === 0 ? 'Starter' : index === 1 ? 'Signature' : index === 2 ? 'Premium' : 'Custom'}</strong>
@@ -92,7 +92,7 @@ function Blog() {
       <div className="blog-grid">
         {posts.map((post) => (
           <article key={post} className="chrome-panel blog-card">
-            <Newspaper className="h-10 w-10 text-[#008eae]" />
+            <Newspaper className="h-10 w-10 text-[#008f98]" />
             <h2>{post}</h2>
             <p>
               Practical ideas from the M-ONE team for creating organized, memorable and polished event experiences.
@@ -125,7 +125,7 @@ function SearchResults({ query, onNavigate }) {
         <div className="search-results">
           {matches.map((match) => (
             <button key={match.page} type="button" onClick={() => onNavigate(match.page)} className="chrome-panel search-card">
-              <CheckCircle2 className="h-8 w-8 text-[#008eae]" />
+              <CheckCircle2 className="h-8 w-8 text-[#008f98]" />
               <span>{match.label}</span>
             </button>
           ))}
@@ -222,7 +222,7 @@ export default function App() {
       </main>
       <TabDock activePage={activePage} onNavigate={handleNavigate} />
       <Footer onNavigate={handleNavigate} />
-      <div className="fixed bottom-24 right-4 z-40 hidden rounded-full bg-white/90 px-4 py-2 text-sm font-black text-[#007797] shadow-xl shadow-cyan-950/10 md:block">
+      <div className="fixed bottom-24 right-4 z-40 hidden rounded-full bg-white/90 px-4 py-2 text-sm font-black text-[#007b86] shadow-xl shadow-cyan-950/10 md:block">
         {PHONE}
       </div>
         </>
