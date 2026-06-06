@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, BadgeCheck, ChevronLeft, Handshake, Trophy } from 'lucide-react'
-import { GALLERY_IMAGES, STATS } from '../data/constants'
+import { GALLERY_IMAGES, STATS, VIDEO_SRC } from '../data/constants'
 
 const iconMap = { BadgeCheck, Handshake, Trophy }
 
@@ -109,6 +109,15 @@ export default function Gallery({ onNavigate }) {
                 We shape every detail for guests, cameras and brands: clear sound, clean lighting, strong visuals and
                 confident on-site execution.
               </p>
+            </article>
+
+            <article className="magazine-page magazine-video">
+              <video src={VIDEO_SRC} autoPlay muted loop playsInline poster={spreadImages[1].src} />
+              <div>
+                <span>05</span>
+                <h2>Live Motion</h2>
+                <p>Watch the M-ONE team and event atmosphere come alive through real production footage.</p>
+              </div>
             </article>
 
             <article className="magazine-page magazine-photo-story">

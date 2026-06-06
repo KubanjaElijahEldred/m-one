@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { PRELOAD_IMAGES } from '../data/constants'
 
 const SPLASH_MS = 3000
-const MIN_SKELETON_MS = 800
+const MIN_SKELETON_MS = 400
 
 function preloadImages(urls) {
   return Promise.all(
